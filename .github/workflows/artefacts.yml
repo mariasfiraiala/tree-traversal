@@ -1,0 +1,25 @@
+name: Artefacts bby
+
+on:
+  pull_request:
+    tags:
+
+jobs:
+  run:
+    name: 🚀 Artefacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Run Doxygen
+        run: |
+          sudo apt install doxygen && doxygen -g && doxygen
+      - uses: actions/upload-artifact@v4
+        with:
+          name: doxygen-results
+          path: |
+            html
+            latex
