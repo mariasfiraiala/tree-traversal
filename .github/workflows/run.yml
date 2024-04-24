@@ -1,7 +1,7 @@
 name: 🚀 Run
 
 on:
-  workflow_dispatch:
+  pull_request:
 
 jobs:
   run:
@@ -16,4 +16,4 @@ jobs:
       - name: 🚀 Run
         shell: bash
         run: |
-          python3 main.py
+          sudo pip install pytest && pytest test_tree.py
